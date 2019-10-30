@@ -5,6 +5,7 @@
   "menu": {
     "view": "View",
     "endpointView": "Endpoint View",
+    "applicationView": "Application View",
     "metricConfiguration": "Metric Configuration",
     "customViews": "Custom Views",
     "configuration": "Configuration",

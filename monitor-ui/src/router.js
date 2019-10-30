@@ -42,7 +42,10 @@ const router = new Router({
           { path: 'editView',  name: 'editView', title: '自定义视图编辑', meta: {},
            component: () => import('@/components/pages/DIY-view/edit-view') },
            { path: 'searchHomepage',  name: 'searchHomepage', title: '搜索主页', meta: {},
-           component: () => import('@/components/pages/Search-homepage') }
+           component: () => import('@/components/pages/Search-homepage') },
+           { path: 'applicationDeploymentDiagram',  name: 'applicationDeploymentDiagram', title: '应用部署逻辑图', meta: {},
+           component: () => import('@/components/pages/Application-deployment-diagram') }
+           
         ]
       },
       {

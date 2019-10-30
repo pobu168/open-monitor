@@ -10,6 +10,7 @@
                 {{$t("menu.view")}}
             </template>
             <MenuItem name="mainView">{{$t("menu.endpointView")}}</MenuItem>
+            <MenuItem name="applicationDeploymentDiagram">{{$t("menu.applicationView")}}</MenuItem>
             <MenuItem name="metricConfig">{{$t("menu.metricConfiguration")}}</MenuItem>
             <MenuItem name="viewConfigIndex">{{$t("menu.customViews")}}</MenuItem>
         </Submenu>
