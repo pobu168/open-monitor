@@ -274,7 +274,7 @@ export default {
     },
     addQuery () {
       if (this.templateQuery.endpoint === '' || this.templateQuery.metricLabel === '' ) {
-        this.$Message.warning('配置完整方可保存！')
+        // this.$Message.warning('配置完整方可保存！')
         return
       }
       this.chartQueryList.push(this.templateQuery)

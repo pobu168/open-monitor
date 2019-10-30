@@ -1,0 +1,565 @@
+{
+  "statusCode": "OK",
+  "data": [
+    {
+      "idcGuid": "0022_0000000002"
+    },
+    {
+      "idcGuid": "0022_0000000001",
+      "linkList": [
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-INTRANET_link_PRD-MGMT",
+            "code": "INTRANET-MGMT",
+            "orchestration": null,
+            "r_guid": "0024_0000000008",
+            "description": "INTRANET-MGMT",
+            "guid": "0024_0000000008",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 123,
+              "code": "INTRANET",
+              "orchestration": null,
+              "r_guid": "0023_0000000006",
+              "description": "内部网",
+              "type": 118,
+              "created_by": "admin",
+              "key_name": "PRD-INTRANET",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000006",
+              "created_date": 1563912452000,
+              "state": 34,
+              "updated_date": 1563912452000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "MGMT",
+              "orchestration": null,
+              "r_guid": "0023_0000000003",
+              "description": "MGMT",
+              "type": 121,
+              "created_by": "admin",
+              "key_name": "PRD-MGMT",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000003",
+              "created_date": 1563912371000,
+              "state": 34,
+              "updated_date": 1563912371000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        },
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-INTERNET_link_PRD-DMZ",
+            "code": "INTERNET-DMZ",
+            "orchestration": null,
+            "r_guid": "0024_0000000007",
+            "description": "INTERNET-DMZ",
+            "guid": "0024_0000000007",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 123,
+              "code": "INTERNET",
+              "orchestration": null,
+              "r_guid": "0023_0000000005",
+              "description": "互联网",
+              "type": 116,
+              "created_by": "admin",
+              "key_name": "PRD-INTERNET",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000005",
+              "created_date": 1563912428000,
+              "state": 34,
+              "updated_date": 1563912428000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "DMZ",
+              "orchestration": null,
+              "r_guid": "0023_0000000002",
+              "description": "DMZ区",
+              "type": 119,
+              "created_by": "admin",
+              "key_name": "PRD-DMZ",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000002",
+              "created_date": 1563912342000,
+              "state": 34,
+              "updated_date": 1563912343000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        },
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-PARTNERNET_link_PRD-ECN",
+            "code": "PARTNERNET-ECN",
+            "orchestration": null,
+            "r_guid": "0024_0000000006",
+            "description": "PARTNERNET-ECN",
+            "guid": "0024_0000000006",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 123,
+              "code": "PARTNERNET",
+              "orchestration": null,
+              "r_guid": "0023_0000000007",
+              "description": "伙伴网",
+              "type": 117,
+              "created_by": "admin",
+              "key_name": "PRD-PARTNERNET",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000007",
+              "created_date": 1563912490000,
+              "state": 34,
+              "updated_date": 1563912490000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "ECN",
+              "orchestration": null,
+              "r_guid": "0023_0000000004",
+              "description": "ECN区",
+              "type": 120,
+              "created_by": "admin",
+              "key_name": "PRD-ECN",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000004",
+              "created_date": 1563912403000,
+              "state": 34,
+              "updated_date": 1563912403000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        },
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-MGMT_link_PRD-ECN",
+            "code": "MGMT-ECN",
+            "orchestration": null,
+            "r_guid": "0024_0000000005",
+            "description": "MGMT-ECN",
+            "guid": "0024_0000000005",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "MGMT",
+              "orchestration": null,
+              "r_guid": "0023_0000000003",
+              "description": "MGMT",
+              "type": 121,
+              "created_by": "admin",
+              "key_name": "PRD-MGMT",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000003",
+              "created_date": 1563912371000,
+              "state": 34,
+              "updated_date": 1563912371000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "ECN",
+              "orchestration": null,
+              "r_guid": "0023_0000000004",
+              "description": "ECN区",
+              "type": 120,
+              "created_by": "admin",
+              "key_name": "PRD-ECN",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000004",
+              "created_date": 1563912403000,
+              "state": 34,
+              "updated_date": 1563912403000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        },
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-DMZ_link_PRD-MGMT",
+            "code": "MGMT-DMZ",
+            "orchestration": null,
+            "r_guid": "0024_0000000004",
+            "description": "MGMT-DMZ",
+            "guid": "0024_0000000004",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "DMZ",
+              "orchestration": null,
+              "r_guid": "0023_0000000002",
+              "description": "DMZ区",
+              "type": 119,
+              "created_by": "admin",
+              "key_name": "PRD-DMZ",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000002",
+              "created_date": 1563912342000,
+              "state": 34,
+              "updated_date": 1563912343000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "MGMT",
+              "orchestration": null,
+              "r_guid": "0023_0000000003",
+              "description": "MGMT",
+              "type": 121,
+              "created_by": "admin",
+              "key_name": "PRD-MGMT",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000003",
+              "created_date": 1563912371000,
+              "state": 34,
+              "updated_date": 1563912371000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        },
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-ECN_link_PRD-SF",
+            "code": "ECN-SF",
+            "orchestration": null,
+            "r_guid": "0024_0000000003",
+            "description": "ECN-SF",
+            "guid": "0024_0000000003",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "ECN",
+              "orchestration": null,
+              "r_guid": "0023_0000000004",
+              "description": "ECN区",
+              "type": 120,
+              "created_by": "admin",
+              "key_name": "PRD-ECN",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000004",
+              "created_date": 1563912403000,
+              "state": 34,
+              "updated_date": 1563912403000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 125,
+              "code": "SF",
+              "orchestration": null,
+              "r_guid": "0023_0000000001",
+              "description": "SF区",
+              "type": 122,
+              "created_by": "admin",
+              "key_name": "PRD-SF",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000001",
+              "created_date": 1563861167000,
+              "state": 34,
+              "updated_date": 1563861167000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        },
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-DMZ_link_PRD-SF",
+            "code": "DMZ-SF",
+            "orchestration": null,
+            "r_guid": "0024_0000000002",
+            "description": "DMZ-SF",
+            "guid": "0024_0000000002",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "DMZ",
+              "orchestration": null,
+              "r_guid": "0023_0000000002",
+              "description": "DMZ区",
+              "type": 119,
+              "created_by": "admin",
+              "key_name": "PRD-DMZ",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000002",
+              "created_date": 1563912342000,
+              "state": 34,
+              "updated_date": 1563912343000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 125,
+              "code": "SF",
+              "orchestration": null,
+              "r_guid": "0023_0000000001",
+              "description": "SF区",
+              "type": 122,
+              "created_by": "admin",
+              "key_name": "PRD-SF",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000001",
+              "created_date": 1563861167000,
+              "state": 34,
+              "updated_date": 1563861167000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        },
+        {
+          "data": {
+            "biz_key": null,
+            "key_name": "PRD-MGMT_link_PRD-SF",
+            "code": "MGMT-SF",
+            "orchestration": null,
+            "r_guid": "0024_0000000001",
+            "description": "MGMT-SF",
+            "guid": "0024_0000000001",
+            "state": {
+              "code": "new",
+              "value": "新增",
+              "seqNo": 1,
+              "codeId": 34,
+              "catId": 7,
+              "cat": {
+                "codes": []
+              },
+              "status": "active",
+              "ciTypes": []
+            },
+            "fixed_date": null,
+            "zone_design1": {
+              "biz_key": null,
+              "zone_layer": 124,
+              "code": "MGMT",
+              "orchestration": null,
+              "r_guid": "0023_0000000003",
+              "description": "MGMT",
+              "type": 121,
+              "created_by": "admin",
+              "key_name": "PRD-MGMT",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000003",
+              "created_date": 1563912371000,
+              "state": 34,
+              "updated_date": 1563912371000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            },
+            "zone_design2": {
+              "biz_key": null,
+              "zone_layer": 125,
+              "code": "SF",
+              "orchestration": null,
+              "r_guid": "0023_0000000001",
+              "description": "SF区",
+              "type": 122,
+              "created_by": "admin",
+              "key_name": "PRD-SF",
+              "p_guid": null,
+              "updated_by": "admin",
+              "guid": "0023_0000000001",
+              "created_date": 1563861167000,
+              "state": 34,
+              "updated_date": 1563861167000,
+              "fixed_date": null,
+              "idc_design": "0022_0000000001"
+            }
+          },
+          "meta": {
+            "nextOperations": [
+              "delete",
+              "update",
+              "confirm"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

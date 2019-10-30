@@ -111,7 +111,6 @@ export default {
         const colorx = ['#61a0a8', '#2f4554', '#c23531', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3']
         const colorSet = colorx.concat(colorx,colorx,colorx,colorx).splice(viewIndex+4)
         responseData.series.forEach((item,index)=>{
-          var index = Math.floor((Math.random()*colorSet.length));
           legend.push(item.name)
           item.symbol = 'none'
           item.smooth = true
