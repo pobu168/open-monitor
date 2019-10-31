@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import * as d3 from "d3-selection"
-require('d3-graphviz');
-import link from '@/assets/config/link.json'
-import tree from '@/assets/config/tree.json'
+import * as d3 from "d3-selection";
+require("d3-graphviz");
+import link from "@/assets/config/link.json";
+import tree from "@/assets/config/tree.json";
 const colors = [
   "#bbdefb",
   "#90caf9",
@@ -45,17 +45,13 @@ export default {
     };
   },
   mounted() {
-    this.idcDesignData = tree.data[0]
-    this.getZoneLink()
-    
+    this.idcDesignData = tree.data[0];
+    this.getZoneLink();
   },
   methods: {
     getZoneLink() {
       this.zoneLinkDesignData = new Map();
-      const {
-        data
-      } = link;
-      console.log(data)
+      const { data } = link;
       const idcLink = data.find(_ => _.idcGuid === this.selectedIdc);
       if (idcLink && idcLink.linkList) {
         idcLink.linkList.forEach(_ => {
@@ -80,12 +76,10 @@ export default {
     initGraph() {
       let graph;
       graph = d3.select("#graph");
-      console.log(graph)
       graph
         .on("dblclick.zoom", null)
         .on("wheel.zoom", null)
         .on("mousewheel.zoom", null);
-      console.log(graph)
       let graphZoom = graph
         .graphviz()
         .width(window.innerWidth * 0.96)
@@ -151,11 +145,13 @@ export default {
             tfsize * 0.8 > (ph - tfsize) * 0.1
               ? (ph - tfsize) * 0.1
               : tfsize * 0.8;
+          fontsize =  fontsize < 8 ? 8: fontsize
           strokewidth = (ph - tfsize) * 0.005;
         } else {
           mgap = (pw / n) * 0.04;
           fontsize =
             tfsize * 0.8 > (pw / n) * 0.1 ? (pw / n) * 0.1 : tfsize * 0.8;
+          fontsize =  fontsize < 8 ? 8: fontsize
           strokewidth = (pw / n) * 0.005;
         }
         w = (pw - mgap) / n - mgap;
@@ -177,18 +173,40 @@ export default {
           g.append("rect")
             .attr("x", rx)
             .attr("y", ry)
+            .attr("ry", 20-deep*4)
+            .attr("ry", 20-deep*4)
             .attr("width", w)
             .attr("height", h)
             .attr("stroke", "black")
             .attr("fill", color)
             .attr("stroke-width", strokewidth);
+
+          /***********customize-start***************/
+          if (node.isLast) {
+            g.append("circle")
+            .attr("cx", tx)
+            .attr("cy", ty+12)
+            .attr("r", 10)
+            .attr("stroke", "blue")
+            .attr("fill", color)
+            .on("dbclick", this.dbClick(11))
+            .attr("stroke-width", strokewidth);
+            g.append("text")
+            .attr("x", tx)
+            .attr("y", ty+16)
+            .text('12%')
+            .attr("style", "text-anchor:middle")
+            .attr("font-size", fontsize);
+          }
+          /***********customize-end***************/
           g.append("text")
             .attr("x", tx)
             .attr("y", ty)
             .text(
-              node.children[i].data.code
-                ? node.children[i].data.code
-                : node.children[i].data.key_name
+              this.test(node,node.children[i])
+              // node.children[i].data.code
+              //   ? node.children[i].data.code
+              //   : node.children[i].data.key_name
             )
             .attr("style", "text-anchor:middle")
             .attr("font-size", fontsize);
@@ -237,18 +255,38 @@ export default {
           g.append("rect")
             .attr("x", rx)
             .attr("y", ry)
+            .attr("ry", 20-deep*4)
+            .attr("ry", 20-deep*4)
             .attr("width", w)
             .attr("height", h)
             .attr("stroke", "black")
             .attr("fill", color)
             .attr("stroke-width", strokewidth);
+          /***********customize-start***************/
+          if (node.isLast) {
+            g.append("circle")
+            .attr("cx", tx)
+            .attr("cy", ty+12)
+            .attr("r", 10)
+            .attr("stroke", "blue")
+            .attr("fill", color)
+            .attr("stroke-width", strokewidth);
+            g.append("text")
+            .attr("x", tx)
+            .attr("y", ty+16)
+            .text('12%')
+            .attr("style", "text-anchor:middle")
+            .attr("font-size", fontsize);
+          }
+          /***********customize-end***************/
           g.append("text")
             .attr("x", tx)
             .attr("y", ty)
             .text(
-              node.children[i].data.code
-                ? node.children[i].data.code
-                : node.children[i].data.key_name
+              this.test(node,node.children[i])
+              // node.children[i].data.code
+              //   ? node.children[i].data.code
+              //   : node.children[i].data.key_name
             )
             .attr("style", "text-anchor:middle")
             .attr("font-size", fontsize);
@@ -263,6 +301,69 @@ export default {
               idcName
             );
           }
+        }
+      }
+    },
+    dbClick (data) {
+      console.log(data)
+    },
+    test(node, childrenData) {
+        return childrenData.data.code
+          ? childrenData.data.code
+          : childrenData.data.key_name;
+    },
+    setEndpoint(node, p1, pw, ph, tfsize, deep, idcName) {
+      let graph;
+      if (idcName === "graphBig") {
+        graph = d3.select("#graphBig").select("#g_" + node.guid);
+      } else {
+        graph = d3.select("#graph").select("#g_" + node.guid);
+      }
+      let n = node.children.length;
+      let w, h, mgap, fontsize, strokewidth;
+      let rx, ry, tx, ty, g;
+      let color = colors[deep];
+      if (pw > ph * 1.2) {
+        mgap = (pw / n) * 0.04;
+        fontsize =
+          tfsize * 0.8 > (pw / n) * 0.1 ? (pw / n) * 0.1 : tfsize * 0.8;
+        strokewidth = (pw / n) * 0.005;
+        // w = (pw - mgap) / n - mgap;
+        // h = ph - tfsize - 2 * mgap;
+        w = 50;
+        h = 20;
+        for (var i = 0; i < n; i++) {
+          rx = p1.x + (w + mgap) * i + mgap;
+          ry = p1.y + tfsize + mgap;
+          tx = p1.x + (w + mgap) * i + w * 0.5 + mgap;
+          if (Array.isArray(node.children[i].children)) {
+            ty = p1.y + tfsize + mgap + fontsize;
+          } else {
+            ty = p1.y + tfsize + mgap + h * 0.5;
+          }
+
+          g = graph
+            .append("g")
+            .attr("class", "node")
+            .attr("id", "g_" + node.children[i].guid);
+          g.append("rect")
+            .attr("x", rx + 8)
+            .attr("y", ry + 8)
+            .attr("width", w)
+            .attr("height", h)
+            .attr("stroke", "black")
+            .attr("fill", color)
+            .attr("stroke-width", strokewidth);
+          g.append("text")
+            .attr("x", tx + 8)
+            .attr("y", ty + 8)
+            .text(
+              node.children[i].data.code
+                ? node.children[i].data.code
+                : node.children[i].data.key_name
+            )
+            .attr("style", "text-anchor:middle")
+            .attr("font-size", fontsize);
         }
       }
     },
@@ -321,9 +422,7 @@ export default {
               label = zone.data.key_name;
             }
             dots.push(
-              `g_${zone.guid}[id="g_${
-                zone.guid
-              }", label="${label}", width=${ll},height=${lg}];`
+              `g_${zone.guid}[id="g_${zone.guid}", label="${label}", width=${ll},height=${lg}];`
             );
           });
           dots.push("}");
@@ -343,7 +442,7 @@ export default {
         result += `${link.azone}->${link.bzone}[arrowhead="none"];`;
       });
       return result;
-    },
+    }
   }
 };
 </script>

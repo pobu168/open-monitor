@@ -1711,6 +1711,7 @@
                 {
                   "ciTypeId": 26,
                   "guid": "0026_0000000011",
+                  "isLast": true,
                   "attrs": [
                     {
                       "ciTypeAttrId": 487,
@@ -2245,7 +2246,15 @@
                       "ciTypes": []
                     },
                     "fixed_date": ""
-                  }
+                  },
+                  "children":[
+                    { "data": { "code": "10.100.102.2", "key_name": "a","value": "60%"} },
+                    { "data": { "code": "10.100.102.3", "key_name": "a","value": "48.3" } },
+                    { "data": { "code": "10.100.102.4", "key_name": "a","value": "10.1" } },
+                    { "data": { "code": "10.100.102.5", "key_name": "a","value": "23.5" } },
+                    { "data": { "code": "10.100.102.6", "key_name": "a","value": "4" } },
+                    { "data": { "code": "10.100.102.7", "key_name": "a","value": "25" } }
+                  ]
                 }
               ]
             }
