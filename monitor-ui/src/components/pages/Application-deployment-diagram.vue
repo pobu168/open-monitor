@@ -1,6 +1,20 @@
 <template>
   <div>
     <div class="graph-container-big" id="graph"></div>
+    <div class="modal fade bs-example-modal-lg" id="add_edit_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">
+                {{$t('title.monitoringInfo')}}-{{(monitoringName)}}
+              </h4>
+            </div>
+            <div class="modal-body">
+              <div :id="elId" class="echart" style="width:780px;height:400px"></div>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,6 +23,11 @@ import * as d3 from "d3-selection";
 require("d3-graphviz");
 import link from "@/assets/config/link.json";
 import tree from "@/assets/config/tree.json";
+
+import {generateUuid} from '@/assets/js/utils'
+// 引入 ECharts 主模块
+import {drawChart} from  '@/assets/config/chart-rely'
+
 const colors = [
   "#bbdefb",
   "#90caf9",
@@ -22,26 +41,15 @@ const colors = [
 export default {
   data() {
     return {
-      allIdcs: [],
       selectedIdc: "0022_0000000001",
-      tabList: [],
-      payload: {
-        filters: [],
-        pageable: {
-          pageSize: 10,
-          startIndex: 0
-        },
-        paging: true
-      },
       graph: new Map(),
       graphBig: "",
-      layerId: 5,
       idcDesignData: null,
       zoneLinkDesignData: new Map(),
-      currentTab: "resource-design",
-      currentGraph: "",
       spinShow: false,
-      isDataChanged: false
+
+      monitoringName: '',
+      elId: ''
     };
   },
   mounted() {
@@ -183,20 +191,7 @@ export default {
 
           /***********customize-start***************/
           if (node.isLast) {
-            g.append("circle")
-            .attr("cx", tx)
-            .attr("cy", ty+12)
-            .attr("r", 10)
-            .attr("stroke", "blue")
-            .attr("fill", color)
-            .on("dbclick", this.dbClick(11))
-            .attr("stroke-width", strokewidth);
-            g.append("text")
-            .attr("x", tx)
-            .attr("y", ty+16)
-            .text('12%')
-            .attr("style", "text-anchor:middle")
-            .attr("font-size", fontsize);
+            this.appendAlartMsg(g,tx,ty,color,strokewidth,fontsize,node.children[i])
           }
           /***********customize-end***************/
           g.append("text")
@@ -210,7 +205,10 @@ export default {
             )
             .attr("style", "text-anchor:middle")
             .attr("font-size", fontsize);
-          if (Array.isArray(node.children[i].children)) {
+         
+         
+         
+         if (Array.isArray(node.children[i].children)) {
             this.setChildren(
               node.children[i],
               { x: rx, y: ry },
@@ -264,19 +262,7 @@ export default {
             .attr("stroke-width", strokewidth);
           /***********customize-start***************/
           if (node.isLast) {
-            g.append("circle")
-            .attr("cx", tx)
-            .attr("cy", ty+12)
-            .attr("r", 10)
-            .attr("stroke", "blue")
-            .attr("fill", color)
-            .attr("stroke-width", strokewidth);
-            g.append("text")
-            .attr("x", tx)
-            .attr("y", ty+16)
-            .text('12%')
-            .attr("style", "text-anchor:middle")
-            .attr("font-size", fontsize);
+            this.appendAlartMsg(g,tx,ty,color,strokewidth,fontsize,node.children[i])
           }
           /***********customize-end***************/
           g.append("text")
@@ -304,8 +290,58 @@ export default {
         }
       }
     },
-    dbClick (data) {
-      console.log(data)
+    appendAlartMsg (g,tx,ty,color,strokewidth,fontsize,data) {
+      g.append("circle")
+        .attr("cx", tx)
+        .attr("cy", ty+12)
+        .attr("r", 10)
+        .attr("stroke", "blue")
+        .attr("fill", color)
+        .attr("stroke-width", strokewidth);
+      g.append("text")
+        .attr("x", tx)
+        .attr("y", ty+16)
+        .text(data.data.value)
+        .on("click", ()=> { this.viewMonitoring(data)})
+        .attr("style", "text-anchor:middle")
+        .attr("cursor", "pointer")
+        .attr("font-size", fontsize);
+    },
+    viewMonitoring(data) {
+      generateUuid().then((elId)=>{
+        this.elId =  `id_${elId}`; 
+        this.monitoringName = data.data.code
+        this.initChart()
+        this.JQ('#add_edit_Modal').modal('show')
+      })
+    },
+    initChart() {
+      let params = {
+        agg: 'none',
+        id: 1,
+        endpoint: ['VM_0_16_centos_192.168.0.16_host'],
+        metric: ['cpu.used.percent'],
+        time: '-1800'
+      }
+      this.$httpRequestEntrance.httpRequestEntrance('GET', '/dashboard/chart', params, responseData => {
+        var legend = []
+        responseData.series.forEach((item)=>{
+          legend.push(item.name)
+          item.symbol = 'none'
+          item.smooth = true
+          item.lineStyle = {
+            width: 1
+          }
+          item.areaStyle = {}
+        }) 
+        let config = {
+          title: responseData.title,
+          legend: legend,
+          series: responseData.series,
+          yaxis: responseData.yaxis,
+        }
+        drawChart(this,config,{eye: false})
+      })
     },
     test(node, childrenData) {
         return childrenData.data.code

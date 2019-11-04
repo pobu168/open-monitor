@@ -42,7 +42,8 @@
     "updateTime": "Update Time",
     "endpointAdd": "Endpoint Add",
     "groupAdd": "Group",
-    "logAdd": "Log"
+    "logAdd": "Log",
+    "monitoringInfo": "Monitoring information"
   },
   "button": {
     "search": "Search",
